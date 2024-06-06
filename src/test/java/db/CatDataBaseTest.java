@@ -1,11 +1,8 @@
 package db;
 
 import constants.CarsDataBaseConstants;
-import io.quarkus.test.junit.QuarkusTest;
 import model.Car;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 

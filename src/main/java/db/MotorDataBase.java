@@ -1,7 +1,6 @@
 package db;
 
 import jakarta.enterprise.context.Dependent;
-import model.Car;
 import model.Motor;
 
 import java.util.ArrayList;
@@ -10,7 +9,8 @@ import java.util.stream.Collectors;
 
 @Dependent
 public class MotorDataBase {
-    private List<Motor> motors = new ArrayList<>();
+    private final List<Motor> motors = new ArrayList<>();
+
     public MotorDataBase() {
         motors.add(new Motor(1, "V8", 300));
         motors.add(new Motor(2, "V8", 310));
@@ -20,7 +20,7 @@ public class MotorDataBase {
         motors.add(new Motor(6, "IDK", 200));
     }
 
-    public List<Motor> selectAllFromMotors(){
+    public List<Motor> selectAllFromMotors() {
         return motors.stream().map(this::getMotorCopy).collect(Collectors.toList());
     }
 

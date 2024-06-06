@@ -1,6 +1,5 @@
 package constants;
 
-import model.Car;
 import model.Motor;
 
 import java.util.List;

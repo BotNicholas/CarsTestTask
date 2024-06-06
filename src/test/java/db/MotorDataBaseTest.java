@@ -1,7 +1,6 @@
 package db;
 
 import constants.MotorsDataBaseConstants;
-import model.Car;
 import model.Motor;
 import org.junit.jupiter.api.*;
 

@@ -16,14 +16,14 @@ public class CarsResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getFull(){
+    public Response getFull() {
         return Response.ok(service.findAll()).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public Response getById(@PathParam("id") Integer id){
+    public Response getById(@PathParam("id") Integer id) {
         return Response.ok(service.findById(id)).build();
     }
 }

@@ -5,30 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.FullCarDataBAseConstants;
 import constants.MotorsDataBaseConstants;
 import io.quarkus.test.InjectMock;
-import io.quarkus.test.Mock;
-import io.quarkus.test.junit.QuarkusMock;
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.http.ContentType;
-import io.restassured.response.ExtractableResponse;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.NotFoundException;
-import jakarta.ws.rs.core.MediaType;
-import model.Car;
 import model.FullCar;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import services.CarsService;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
@@ -56,39 +45,14 @@ public class CarsResourceTest {
         Assertions.assertEquals(expected, actual);
 
         System.out.printf("Expected: %s\nActual: %s\n", expected, actual);
-
-
-//        Mockito.verify(service).findAll();//will pass
-//        Mockito.verify(service).findById(666);//will not pass
-
-
-//        given().contentType(ContentType.JSON).when().get("/cars").then().statusCode(200).body("$", is(FullCarDataBAseConstants.cars));
-
-//         List<FullCar> extracted =
-//                given()
-//                        .when()
-//                        .get("/cars")
-//                        .then()
-//                        .statusCode(200)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .extract().as(List.class);/*.body("$[0]", is(1));*/
-//        System.out.println(extracted);
-
-//        String cars = mapper.writeValueAsString(FullCarDataBAseConstants.cars);
-//        System.out.println(cars);
-
-
-//        System.out.println(result);
-//        System.out.println(result.get(0));
-//        Assertions.assertEquals(result, FullCarDataBAseConstants.cars);
     }
 
     @Test
     @DisplayName("\tCarsResource find all with different resource test")
     public void getFullTestForAllDifferent() throws JsonProcessingException {
         List<FullCar> cars2 = List.of(new FullCar(1, "Supra123", "Toyota123", MotorsDataBaseConstants.motor2),
-                                      new FullCar(2, "M3123", "BMW13",MotorsDataBaseConstants.motor3),
-                                      new FullCar(3, "Logan13", "Dacia13",MotorsDataBaseConstants.motor4));
+                new FullCar(2, "M3123", "BMW13", MotorsDataBaseConstants.motor3),
+                new FullCar(3, "Logan13", "Dacia13", MotorsDataBaseConstants.motor4));
 
         Mockito.when(service.findAll()).thenReturn(FullCarDataBAseConstants.cars).thenReturn(cars2);
 
